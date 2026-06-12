@@ -1,0 +1,16 @@
+node_modules/
+dist/
+__pycache__/
+*.pyc
+*.pyo
+*.log
+*.duckdb
+*.duckdb.wal
+*.tif
+*.tiff
+.env
+.env.*
+
+# Local scratch files from prototype setup
+temp-write-test.txt
+test.js

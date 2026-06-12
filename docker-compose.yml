@@ -1,0 +1,22 @@
+services:
+  raster-service:
+    build: ./raster-service
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./raster-service:/app
+
+  backend-service:
+    build: ./backend-service
+    ports:
+      - "3000:3000"
+
+  frontend:
+    image: nginx:alpine
+    ports:
+      - "8080:80"
+    volumes:
+      - ./frontend:/usr/share/nginx/html:ro
+    depends_on:
+      - backend-service
+      - raster-service
