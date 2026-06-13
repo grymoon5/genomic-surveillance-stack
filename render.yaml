@@ -1,0 +1,19 @@
+services:
+  - type: web_service
+    name: genomic-backend
+    env: docker
+    plan: free
+    dockerfilePath: backend-service/Dockerfile
+    buildCommand: "npm ci && npm run build"
+    startCommand: "node dist/index.js"
+    port: 3000
+    autoDeploy: true
+
+  - type: web_service
+    name: genomic-raster
+    env: docker
+    plan: free
+    dockerfilePath: raster-service/Dockerfile
+    startCommand: "uvicorn main:app --host 0.0.0.0 --port 8000"
+    port: 8000
+    autoDeploy: true

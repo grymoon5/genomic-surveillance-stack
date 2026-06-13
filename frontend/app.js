@@ -1,6 +1,7 @@
-const API_BASE = 'http://localhost:3000';
-const WS_URL = 'ws://localhost:3000';
-const RASTER_TILE_URL = 'http://localhost:8000/tiles/{z}/{x}/{y}.png';
+const config = window.APP_CONFIG || {};
+const API_BASE = config.API_BASE || 'http://localhost:3000';
+const WS_URL = config.WS_URL || 'ws://localhost:3000';
+const RASTER_TILE_URL = config.RASTER_TILE_URL || 'http://localhost:8000/tiles/{z}/{x}/{y}.png';
 
 const singaporeCenter = [103.8198, 1.3521];
 const caseGeoJSON = {

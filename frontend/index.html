@@ -122,6 +122,15 @@
         </div>
     </div>
     <div id="map"></div>
+    <script>
+        // Override endpoints when deployed to a remote host.
+        // Replace these values with your hosted backend and raster service URLs.
+        window.APP_CONFIG = window.APP_CONFIG || {
+            API_BASE: 'http://localhost:3000',
+            WS_URL: 'ws://localhost:3000',
+            RASTER_TILE_URL: 'http://localhost:8000/tiles/{z}/{x}/{y}.png'
+        };
+    </script>
     <script src="app.js"></script>
 </body>
 </html>
