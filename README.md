@@ -106,11 +106,8 @@ You can host both the `backend-service` and `raster-service` on Render using Doc
 1. Push your repository to GitHub (see the `scripts/push-to-github.sh` helper).
 2. Open the Render dashboard and create a new service by connecting your GitHub repo. Choose "Deploy from render.yaml" (Render will detect `render.yaml`).
 3. If you prefer the UI, create two services:
-  - Service `genomic-backend`: Docker, build from `backend-service/`, port `3000`, start command `node dist/index.js`.
-  - Service `genomic-raster`: Docker, build from `raster-service/`, port `8000`, start command `uvicorn main:app --host 0.0.0.0 --port 8000`.
-4. After services are live, note their public URLs and update `frontend/index.html` or runtime `APP_CONFIG` with `API_BASE`, `WS_URL`, and `RASTER_TILE_URL` pointing to those URLs.
-
-Security note: If you expose the DuckDB file (`backend-service/data.duckdb`) make sure you understand data persistence and backups. Consider using a managed database if you need durability across deployments.
+   - Service `genomic-backend`: Node, root directory `backend-service/`, port `3000`, build command `npm ci && npm run build`, start command `npm start`.
+   - Service `genomic-raster`: Python, root directory `raster-service/`, port `8000`, build command `python -m pip install --upgrade pip setuptools wheel && python -m pip install --no-cache-dir -r requirements.txt`, start command `uvicorn main:app --host 0.0.0.0 --port 8000`.
 
 
 ## Docker Compose
